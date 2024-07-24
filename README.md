@@ -1,5 +1,3 @@
-![Example](./example.png)
-
 # Envicons
 
 I use this to extend the prompt provided by [startship](https://starship.rs/).
