@@ -1,5 +1,4 @@
-use std::default::Default;
-use std::env;
+use std::{default::Default, env};
 
 use bollard::{container::ListContainersOptions, Docker};
 
@@ -21,6 +20,8 @@ async fn check_containers(envicons: &mut Envicons) {
                         envicons.rabbitmq.container = true
                     } else if image.contains("redis") {
                         envicons.redis.container = true
+                    } else if image.contains("mongo") {
+                        envicons.mongo.container = true
                     }
                 }
             }
@@ -67,17 +68,19 @@ struct Envicons {
     couchdb: Item,
     redis: Item,
     rabbitmq: Item,
+    mongo: Item,
 }
 
 impl Envicons {
     fn output(&self) -> String {
         format!(
-            "{}{}{}{}{}",
+            "{}{}{}{}{}{}",
             self.openai.output("󰧑 "),
             self.postgres.output(" "),
             self.redis.output(" "),
             self.rabbitmq.output("󱩢 "),
             self.couchdb.output("󰳃 "),
+            self.mongo.output(" "),
         )
     }
 }
