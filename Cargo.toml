@@ -3,6 +3,13 @@ name = "envicons"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "envicons"
+
 [dependencies]
 bollard = "0.16.1"
 tokio = { version = "1.39.1", features = ["full"] }
