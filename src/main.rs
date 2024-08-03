@@ -22,6 +22,10 @@ async fn check_containers(envicons: &mut Envicons) {
                         envicons.redis.container = true
                     } else if image.contains("mongo") {
                         envicons.mongo.container = true
+                    } else if image.contains("gazebo") {
+                        envicons.px4.container = true
+                    } else if image.contains("ardupilot") {
+                        envicons.ardupilot.container = true
                     }
                 }
             }
@@ -69,18 +73,22 @@ struct Envicons {
     redis: Item,
     rabbitmq: Item,
     mongo: Item,
+    px4: Item,
+    ardupilot: Item,
 }
 
 impl Envicons {
     fn output(&self) -> String {
         format!(
-            "{}{}{}{}{}{}",
+            "{}{}{}{}{}{}{}{}",
             self.openai.output("󰧑 "),
             self.postgres.output(" "),
             self.redis.output(" "),
             self.rabbitmq.output("󱩢 "),
             self.couchdb.output("󰳃 "),
             self.mongo.output(" "),
+            self.px4.output("󰐴 PX4 "),
+            self.ardupilot.output("󰐴 ARDU "),
         )
     }
 }
