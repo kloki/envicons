@@ -101,6 +101,7 @@ impl Envicons {
         self.items
             .iter()
             .map(|i| i.output())
+            .filter(|x| !x.is_empty())
             .collect::<Vec<_>>()
             .join(" ")
     }
