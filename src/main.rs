@@ -11,6 +11,7 @@ async fn main() {
         envicon!("", contains!("mongo"), contains!("MONGO")),
         envicon!("󰐴 PX4", contains!("gazebo"), never!()),
         envicon!("󰐴 AP", contains!("ardupilot"), never!()),
+        envicon!("󰐴 ", never!(), equals!("DRONE_URI")),
     ]);
     envicons.check_envars();
     envicons.check_containers().await;
